@@ -13,7 +13,7 @@ def get_spain_geopandas_frame():
 def change_canary_crs_to_spain_crs(canary_layer, spain_layer):
     return canary_layer.to_crs(spain_layer.crs)
 
-def move_canary_closest_to_spain(canary_layer):
+def move_canary_close_to_spain(canary_layer):
     added_x = 18
     added_y = 8
     canary_layer['geometry'] = canary_layer['geometry'].apply(lambda geom: translate(geom, added_x, added_y))
@@ -29,7 +29,7 @@ def export_spain_canary_frame_to_geojson(exported_layer):
 canary_geopandas_frame = get_canary_geopandas_frame()
 spain_geopandas_frame = get_spain_geopandas_frame()
 canary_geopandas_frame = change_canary_crs_to_spain_crs(canary_geopandas_frame, spain_geopandas_frame)
-canary_geopandas_frame = move_canary_closest_to_spain(canary_geopandas_frame)
+canary_geopandas_frame = move_canary_close_to_spain(canary_geopandas_frame)
 spain_canary_frame = merge_spain_and_canary_frames(spain_geopandas_frame, canary_geopandas_frame)
 export_spain_canary_frame_to_geojson(spain_canary_frame)
 

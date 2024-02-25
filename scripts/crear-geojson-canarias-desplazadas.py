@@ -32,5 +32,3 @@ canary_layer = change_layer_crs(canary_layer, spain_layer.crs)
 canary_layer = move_layer_close_to_spain(canary_layer)
 spain_canary_layer = merge_layers(spain_layer, canary_layer)
 export_layer_to_geojson(spain_canary_layer)
-
-
